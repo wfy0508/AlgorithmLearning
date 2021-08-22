@@ -5,7 +5,7 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MapTest {
+public class MapTest1 {
 
     @Test
     public void test() {
