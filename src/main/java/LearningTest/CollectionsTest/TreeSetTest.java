@@ -9,6 +9,9 @@ import org.junit.Test;
 
 import java.util.*;
 
+/**
+ * @author Summer
+ */
 public class TreeSetTest {
 
     @Test
@@ -65,13 +68,13 @@ public class TreeSetTest {
             }
         };
 
-        TreeSet set1 = new TreeSet(comparator);
+        TreeSet set1 = new TreeSet<>(comparator);
         set1.add(new User1("Tom", 89));
         set1.add(new User1("Jack", 23));
         set1.add(new User1("Tom", 34));
         set1.add(new User1("Lucy", 22));
 
-        Iterator iterator = set1.iterator();
+        Iterator<Object> iterator = set1.iterator();
         for (Object o : set1) {
             System.out.println(o.toString());
         }
@@ -129,10 +132,7 @@ class User1 {
 
     @Override
     public String toString() {
-        return "User1{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                '}';
+        return "User1{" + "name='" + name + '\'' + ", age=" + age + '}';
     }
 }
 
