@@ -22,7 +22,6 @@ public class GenericExample {
 
         hashMap.put("张三", list);
         Set<Map.Entry<String, ArrayList<Citizen>>> entrySet = hashMap.entrySet();
-        Iterator<Map.Entry<String, ArrayList<Citizen>>> iterator = entrySet.iterator();
         for (Map.Entry<String, ArrayList<Citizen>> listEntry : entrySet) {
             String key = listEntry.getKey();
             ArrayList<Citizen> value = listEntry.getValue();
