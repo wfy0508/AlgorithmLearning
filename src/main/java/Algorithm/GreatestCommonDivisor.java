@@ -4,6 +4,9 @@ package Algorithm;/*
     Create time: 2021/5/27 11:06
 */
 
+/**
+ * @author Summer
+ */
 public class GreatestCommonDivisor {
     public static void main(String[] args) {
         int a = 99;
