@@ -7,10 +7,7 @@ package LearningTest.IOTest;
 
 import org.junit.Test;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * @author Summer
@@ -100,6 +97,23 @@ public class FileReaderWriterTest {
         }
 
 
+    }
+
+    /**
+     * 从内存写入到硬盘
+     */
+    @Test
+    public void test2() throws IOException {
+        // 1. 指明写出的文件
+        // 没有则创建，有则覆盖
+        File file = new File("hello2.txt");
+        // 2. 提供FileWriter对象
+        // 为true则追加内容
+        FileWriter fw = new FileWriter(file, true);
+        // 3. 写出的操作
+        fw.write("FileWriter test successful!\n");
+        // 4. 资源的关闭
+        fw.close();
     }
 
 }
