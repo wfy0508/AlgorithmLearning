@@ -32,7 +32,7 @@ public class FileReaderWriterTest {
         FileReader fr = null;
         try {
             // 1. 指明要操作的文件
-            File file1 = new File("D:\\Learning\\Workspace\\AlgorithmLearning\\src\\main\\java\\LearningTest\\IOTest\\hello.txt");
+            File file1 = new File("hello1.txt");
             System.out.println(file1.getAbsolutePath());
             // 2. 提供具体的流
             fr = new FileReader(file1);
@@ -64,7 +64,7 @@ public class FileReaderWriterTest {
         FileReader fr = null;
         try {
             // 1. File类的实例化
-            File file1 = new File("D:\\Learning\\Workspace\\AlgorithmLearning\\src\\main\\java\\LearningTest\\IOTest\\hello.txt");
+            File file1 = new File("hello1.txt");
             // 2. FileReader流的实例化
             fr = new FileReader(file1);
             // 3. 读入的操作
@@ -116,4 +116,89 @@ public class FileReaderWriterTest {
         fw.close();
     }
 
+    /**
+     * 从硬盘写入到内存，再从内存写到硬盘
+     */
+    @Test
+    public void test3() throws IOException {
+        FileReader fr = null;
+        FileWriter fw = null;
+        try {
+            // 1. 指明源文件和目标文件
+            File srcFile = new File("hello1.txt");
+            File destFile = new File("hello2.txt");
+
+            // 2. 提供FileWriter对象和FileReader对象
+            fr = new FileReader(srcFile);
+            fw = new FileWriter(destFile);
+
+            // 3. 读入和写出的操作
+            int len;
+            char[] cbuf = new char[5];
+            while ((len = fr.read(cbuf)) != -1) {
+                fw.write(cbuf, 0, len);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // 4. 资源的关闭
+        try {
+            if (fw != null) {
+                fw.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            if (fr != null) {
+                fr.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 图片的复制(字节流)
+     */
+    @Test
+    public void test4() throws IOException {
+        // 1. 指定源文件和目标文件
+        FileInputStream fis = null;
+        FileOutputStream fos = null;
+        try {
+            File srcJpg = new File("google.jpg");
+            File destJpg = new File("google1.jpg");
+
+            // 2. 指定FileInputStream和FileOutputStream对象
+            fis = new FileInputStream(srcJpg);
+            fos = new FileOutputStream(destJpg);
+
+            // 3. 读入和写出操作
+            byte[] byteArray = new byte[5];
+            int len;
+            while ((len = fis.read(byteArray)) != -1) {
+                fos.write(byteArray, 0, len);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            // 关闭资源
+            if (fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (fis != null) {
+                try {
+                    fis.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 }

@@ -18,7 +18,7 @@ public class FileExercise {
     @Test
     public void test() throws IOException {
         // 在hello.txt同目录下创建hello1.txt
-        File file1 = new File("D:\\Learning\\Workspace\\FileTest\\parent\\son\\hello.txt");
+        File file1 = new File("D:\\Learning\\Workspace\\FileTest\\parent\\son\\hello1.txt");
         File file2 = new File(file1.getParent(), "hello1.txt");
         boolean newFile = file2.createNewFile();
         System.out.println(newFile);

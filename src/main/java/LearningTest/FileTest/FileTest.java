@@ -55,7 +55,7 @@ public class FileTest {
         // 删除文件
         System.out.println("删除文件: " + file5.delete());
 
-        File file6 = new File("D:\\Learning\\Workspace\\FileTest\\parent\\son\\hello.txt");
+        File file6 = new File("D:\\Learning\\Workspace\\FileTest\\parent\\son\\hello1.txt");
         File file7 = new File("D:\\Learning\\Workspace\\FileTest\\parent\\son\\world.txt");
         boolean newFile1 = file6.createNewFile();
         boolean newFile2 = file7.createNewFile();
