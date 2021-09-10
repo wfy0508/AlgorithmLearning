@@ -120,7 +120,7 @@ public class FileReaderWriterTest {
      * 从硬盘写入到内存，再从内存写到硬盘
      */
     @Test
-    public void test3() throws IOException {
+    public void test3() {
         FileReader fr = null;
         FileWriter fw = null;
         try {
@@ -163,7 +163,7 @@ public class FileReaderWriterTest {
      * 图片的复制(字节流)
      */
     @Test
-    public void test4() throws IOException {
+    public void test4() {
         // 1. 指定源文件和目标文件
         FileInputStream fis = null;
         FileOutputStream fos = null;
