@@ -16,11 +16,11 @@ import java.io.*;
  * 2. 数据的流向：输入流、输出流
  * 3. 流的角色：节点流、处理流
  * <p>
- * 抽象基类：      字节流：            缓冲流：
- * InputStream   FileInputStream   BufferedInputStream
- * OutputStream  FileOutputStream  BufferedOutputStream
- * Reader        FileReader        BufferedReader
- * Writer        FileWriter        BufferedWriter
+ * 抽象基类：      字节流：                                          缓冲流：
+ * InputStream   FileInputStream(read(byte[] buffer))            BufferedInputStream(read(byte[] buffer))
+ * OutputStream  FileOutputStream(write(byte[] buffer, 0, len))  BufferedOutputStream(write(byte[] buffer, 0, len))
+ * Reader        FileReader(read(char[] cbuf))                   BufferedReader(read(char[] cbuf))
+ * Writer        FileWriter(write(write[] cbuf, 0, len))         BufferedWriter(write(write[] cbuf, 0, len))
  *
  * 对于文本文件（.txt, .java, .cpp, .sql），使用字符流处理
  * 对于非文本文件(.mp4, .jpg, .doc, .ppt)，使用字节流处理
@@ -221,7 +221,7 @@ public class FileReaderWriterTest {
             fos = new FileOutputStream(destFile);
 
             // 3. 读取和写入
-            byte[] buffer = new byte[1024];
+            byte[] buffer = new byte[5];
             int len;
             while ((len = fis.read(buffer)) != -1) {
                 fos.write(buffer, 0, len);
