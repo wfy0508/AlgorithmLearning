@@ -21,6 +21,9 @@ import java.io.*;
  * OutputStream  FileOutputStream  BufferedOutputStream
  * Reader        FileReader        BufferedReader
  * Writer        FileWriter        BufferedWriter
+ *
+ * 对于文本文件（.txt, .java, .cpp, .sql），使用字符流处理
+ * 对于非文本文件(.mp4, .jpg, .doc, .ppt)，使用字节流处理
  */
 public class FileReaderWriterTest {
 
@@ -200,5 +203,63 @@ public class FileReaderWriterTest {
                 }
             }
         }
+    }
+
+    /**
+     * 复制指定目录下的文件
+     */
+    public void copyFile(String srcPath, String destPath) throws IOException {
+        FileInputStream fis = null;
+        FileOutputStream fos = null;
+        try {
+            // 1. 指定输入和输出路径
+            File srcFile = new File(srcPath);
+            File destFile = new File(destPath);
+
+            // 2. 指定操作对象
+            fis = new FileInputStream(srcFile);
+            fos = new FileOutputStream(destFile);
+
+            // 3. 读取和写入
+            byte[] buffer = new byte[1024];
+            int len;
+            while ((len = fis.read(buffer)) != -1) {
+                fos.write(buffer, 0, len);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (fis != null) {
+                try {
+                    fis.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    @Test
+    public void test5() throws IOException {
+        long start = System.currentTimeMillis();
+
+        // String srcPath = "C:\\Users\\Summer\\Desktop\\001.mp4";
+        // String destPath = "C:\\Users\\Summer\\Desktop\\002.mp4";
+
+        String srcPath = "C:\\Users\\Summer\\Desktop\\create_table.sql";
+        String destPath = "C:\\Users\\Summer\\Desktop\\create_table1.sql";
+        // 复制文本文件时，相当于一次透传
+        copyFile(srcPath ,destPath);
+
+        long end = System.currentTimeMillis();
+
+        System.out.println("复制花费的时间："+(end - start));
     }
 }
