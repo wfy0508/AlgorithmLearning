@@ -43,11 +43,20 @@ public class WordCountTest {
 
             for (Map.Entry<Character, Integer> iter : entrySet) {
                 switch (iter.getKey()) {
-                    case ' ' -> bw.write("空格=" + iter.getValue());
-                    case '\t' -> bw.write("tab键=" + iter.getValue());
-                    case '\n' -> bw.write("换行符=" + iter.getValue());
-                    case '\r' -> bw.write("回车键=" + iter.getValue());
-                    default -> bw.write(iter.getKey() + "=" + iter.getValue());
+                    case ' ' :
+                        bw.write("空格=" + iter.getValue());
+                        break;
+                    case '\t' :
+                        bw.write("tab键=" + iter.getValue());
+                        break;
+                    case '\n' :
+                        bw.write("换行符=" + iter.getValue());
+                        break;
+                    case '\r' :
+                        bw.write("回车键=" + iter.getValue());
+                        break;
+                    default :
+                        bw.write(iter.getKey() + "=" + iter.getValue());
                 }
                 bw.newLine();
             }
