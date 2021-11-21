@@ -11,6 +11,7 @@ import java.io.*;
  * @Create Time: 2021/9/25 18:08
  * 序列化：ObjectOutPutStream
  * 反序列化：ObjectInputStream
+ * 两个都不能修饰static和transient两种类型
  */
 
 public class ObjectInputOutputStreamTest {
@@ -28,6 +29,10 @@ public class ObjectInputOutputStreamTest {
 
             // 写入一个Person对象
             oos.writeObject(new Person("张伟", 20));
+            oos.flush();
+
+            // 使用另一个构造器写入一个新的Person对象
+            oos.writeObject(new Person("张三", 33, new Account(5000.0)));
             oos.flush();
 
         } catch (IOException e) {
@@ -62,6 +67,10 @@ public class ObjectInputOutputStreamTest {
             Person person = (Person) ois.readObject();
             System.out.println(person);
 
+            // 读取另外一个对象
+            Person person1 = (Person) ois.readObject();
+            System.out.println(person1);
+
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
@@ -91,10 +100,17 @@ class Person implements Serializable {
 
     private String name;
     private int age;
+    private Account acct;
 
     public Person(String name, int age) {
         this.name = name;
         this.age = age;
+    }
+
+    public Person(String name, int age, Account acct) {
+        this.name = name;
+        this.age = age;
+        this.acct = acct;
     }
 
     public void setAge(int age) {
@@ -118,7 +134,24 @@ class Person implements Serializable {
         return "Person{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
+                ", acct=" + acct +
                 '}';
     }
 }
 
+class Account implements Serializable{
+    private double balance;
+
+    public static final long serialVersionUID = 237946127342L;
+
+    public Account(double balance) {
+        this.balance = balance;
+    }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "balance=" + balance +
+                '}';
+    }
+}
