@@ -16,7 +16,7 @@ public class JDK8DateTest {
     public void testDate() {
         Date date = new Date(2020, 9, 23);
         // 并不是我们期望的日期，是带有偏移量的日期
-        System.out.println(date); // Sat Oct 23 00:00:00 CST 3920
+        System.out.println(date);
         // 想要期望的日期
         Date date1 = new Date(2020 - 1900, 9 - 1, 23);
         System.out.println(date1);
