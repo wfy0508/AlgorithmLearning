@@ -1,4 +1,4 @@
-package LearningTest;
+package Algorithm;
 /*
     PROJECT_NAME: AlgorithmLearning
     User: Summer
